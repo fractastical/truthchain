@@ -2,4 +2,4 @@ Goal is to document the axioms that one has including derivative beliefs in such
 
 First version is done in python. 
 
-<img width="1447" alt="Screenshot 2024-05-06 at 12 23 08" src="https://github.com/fractastical/truthchain/assets/589191/8d73de63-d941-484e-beec-6eaa65899af8">
+<img width="1394" alt="Screenshot 2024-05-06 at 12 50 14" src="https://github.com/fractastical/truthchain/assets/589191/594b6f1b-ea9c-4720-94ab-0a64530fedce">
