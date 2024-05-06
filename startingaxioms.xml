@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beliefs>
+  <axioms>
+    <axiom id="axiom1">There is order to the universe</axiom>
+    <axiom id="axiom2">I can understand the order</axiom>
+    <axiom id="axiom3">Data input varies in reliability</axiom>
+    <axiom id="axiom4">I can add data by querying third parties</axiom>
+  </axioms>
+
+  <derived_beliefs>
+    <belief id="belief1" derived_from="axiom1">My base sensory data is somewhat reliable</belief>
+    <belief id="belief2">I need to continually reassess the reliability of this data</belief>
+    <belief id="belief3">If you score the data reliability along a linear axis this will produce more reliable results than binary data</belief>
+  </derived_beliefs>
+
+  <definitions>
+    <definition id="def1" derived_from="axiom4">This aggregated data is known as phenomenological scope</definition>
+  </definitions>
+</beliefs>
