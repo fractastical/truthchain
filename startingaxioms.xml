@@ -13,6 +13,19 @@
     <belief id="belief3">If you score the data reliability along a linear axis this will produce more reliable results than binary data</belief>
   </derived_beliefs>
 
+ <!-- Astrology as an example -->
+ <!-- Add: hard data examples, rating of hardness -->
+
+  <derived_beliefs>
+    <belief id="beliefa1">Many people observe some form of serendipity</belief>
+    <belief id="beliefa2">Science has not provided any hard confirmation of any "star" based influence on people's personalities</belief>
+    <belief id="beliefa3">All of the hard data that has been gathered on dating/coupling shows no coorelation whatsover for sun signs</belief>
+    <belief id="beliefa4" derived_from="beliefa3,beliefa2">Astrology should not be treated as a reliable source of information</belief>
+  </derived_beliefs>
+
+
+  <!-- Sexuality as an example -->
+
   <definitions>
     <definition id="def1" derived_from="axiom4">This aggregated data is known as phenomenological scope</definition>
   </definitions>
