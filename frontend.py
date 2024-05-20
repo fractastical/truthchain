@@ -6,10 +6,13 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # Parse XML
-    tree = ET.parse('path_to_your_beliefs.xml')
+    tree = ET.parse('startingaxioms.xml')
     root = tree.getroot()
     # Convert XML to a structured format (e.g., dictionary)
     beliefs_data = parse_xml_to_structure(root)
+    console.log(beliefs_data);
+	# root = d3.hierarchy(data, function(d) { return d.children; });
+
     # Render template, passing the structured data
     return render_template("index.html", data=beliefs_data)
 
