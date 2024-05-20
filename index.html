@@ -41,9 +41,11 @@
                 scales.forEach((scale, i) => {
                     const angle = angles[i];
                     const offset = offsets[i];
+                    const cosAngle = Math.cos(angle * Math.PI / 180);
+                    const sinAngle = Math.sin(angle * Math.PI / 180);
                     const newPoint = {
-                        x: point.x * scale * Math.cos(angle * Math.PI / 180) - point.y * scale * Math.sin(angle * Math.PI / 180) + offset.x * height,
-                        y: point.x * scale * Math.sin(angle * Math.PI / 180) + point.y * scale * Math.cos(angle * Math.PI / 180) + offset.y * height
+                        x: point.x * scale * cosAngle - point.y * scale * sinAngle + offset.x * height,
+                        y: point.x * scale * sinAngle + point.y * scale * cosAngle + offset.y * height
                     };
                     newPoints.push(newPoint);
                 });
@@ -64,8 +66,8 @@
         function evolveFractal() {
             for (let i = 0; i < maxIterations; i++) {
                 points = transformPoints(points);
-                drawPoints(points);
             }
+            drawPoints(points);
         }
 
         evolveFractal();
