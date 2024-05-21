@@ -39,11 +39,12 @@
         // Add a node with a link to an external form
         nodes.push({ id: 103, name: 'submit data', url: 'https://docs.google.com/forms/d/e/1FAIpQLSfh7lFcK9RfwvQxXTj9FRFdEctZt_rQ3EYlU7K0SvEPjIDcYA/viewform' });
         nodes.push({ id: 104, name: 'description', url: 'https://digitalasset.ai/description.html' });
+        nodes.push({ id: 105, name: 'philosophy', url: 'https://digitalasset.ai/philosophy.html' });
 
         // Generate random links between nodes
-        const links = d3.range(200).map(() => ({
-            source: Math.floor(Math.random() * 105),
-            target: Math.floor(Math.random() * 105)
+        const links = d3.range(210).map(() => ({
+            source: Math.floor(Math.random() * 106),
+            target: Math.floor(Math.random() * 106)
         }));
 
         // Remove letters D and A from node names
