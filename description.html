@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Digital Asset AI Node Graph</title>
+    <title>Digital Asset AI Description</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -15,35 +16,71 @@
         }
         svg {
             border: 1px solid #ccc;
+            margin-top: 20px;
         }
         text {
             font-family: 'Courier New', Courier, monospace;
             font-size: 10px;
             fill: #333;
         }
+        .content {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            color: #333;
+        }
+        p {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
-    <svg width="800" height="800"></svg>
+
+    <div class="content">
+        <h1> Reclaim Your Crypto, Reclaim Your Power: Introducing TICS by DigitalAsset.ai</h1>
+
+        <p>The crypto revolution promised financial freedom, but fraudsters have turned dreams into nightmares. Rug pulls, scams, and shady projects have left countless investors in despair, their hard-earned assets stolen and their trust shattered. But the fight isn't over. It's time to rise up, reclaim what's yours, and restore faith in the future of crypto.</p>
+        
+        <h1>TICS: The Ultimate Weapon Against Token Fraud</h1>
+        
+        <p>DigitalAsset.ai proudly unveils TICS, the Token Investigatory Claims Service – your ultimate weapon in the battle against token fraud. TICS is more than just a service; it's a movement, a revolution ignited by the collective fury of those who refuse to be victims. We're here to empower you, to give you the tools and expertise to fight back against the criminals who prey on the crypto community.</p>
+        
+        <h1>Ignite the Spark of Justice</h1>
+        
+        <p>With TICS, you're not just filing a claim; you're igniting a spark of justice. Our team of seasoned investigators, armed with cutting-edge technology and unwavering determination, will tirelessly pursue the truth, expose the lies, and build an ironclad case for your stolen assets. We'll work hand in hand with top legal experts, ensuring your voice is heard and your rights are protected.</p>
+        
+        <h1>Join the TICS Revolution</h1>
+        
+        <p>Don't let the fraudsters silence you. Don't let them steal your future. Join the TICS revolution and become a beacon of hope for the crypto community. Together, we'll reclaim what's ours, rebuild trust, and pave the way for a brighter, more secure crypto future.</p> 
+        
+        <p>This is your moment. This is your fight. Reclaim your crypto, reclaim your power with TICS by DigitalAsset.ai. The revolution starts now.</p>
+    </div>
+
+    <svg width="800" height="150"></svg>
     <script>
         const svg = d3.select("svg");
 
         // Generate 100 nodes
-        const nodes = d3.range(100).map(i => ({ id: i, name: ` ` }));
+        const nodes = d3.range(10).map(i => ({ id: i, name: ` ` }));
 
         // Add three additional nodes
-        nodes.push({ id: 100, name: 'digital' });
-        nodes.push({ id: 101, name: 'asset' });
-        nodes.push({ id: 102, name: 'artificial intelligence' });
+        nodes.push({ id: 10, name: 'digital' });
+        nodes.push({ id: 11, name: 'asset' });
+        nodes.push({ id: 12, name: 'artificial intelligence' });
         
         // Add a node with a link to an external form
-        nodes.push({ id: 103, name: 'submit data', url: 'https://docs.google.com/forms/d/e/1FAIpQLSfh7lFcK9RfwvQxXTj9FRFdEctZt_rQ3EYlU7K0SvEPjIDcYA/viewform' });
-        nodes.push({ id: 104, name: 'description', url: 'https://digitalasset.ai/description.html' });
+        nodes.push({ id: 13, name: 'home', url: 'https://digitalasset.ai' });
 
         // Generate random links between nodes
-        const links = d3.range(200).map(() => ({
-            source: Math.floor(Math.random() * 105),
-            target: Math.floor(Math.random() * 105)
+        const links = d3.range(30).map(() => ({
+            source: Math.floor(Math.random() * 14),
+            target: Math.floor(Math.random() * 14)
         }));
 
         // Remove letters D and A from node names
