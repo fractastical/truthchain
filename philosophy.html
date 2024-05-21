@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Asset AI Philosophy</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+        }
+        svg {
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 10px;
+            fill: #333;
+        }
+        .content {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            color: #333;
+        }
+        p {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Philosophy</h1>
+
+        <p>This project was born out of an attempt to build an axiomatic model of truth where people are in control of their starting axioms partially modeled on Wittgenstein. It assumes that truth is a valuable concept and that building on top of truth is a more solid foundation.</p>
+                
+        <h1>Implementation </h1>
+        
+        <p>The initial implementation was built in on combination of xml and python code with sets of starting axioms. This was called <a href="https://github.com/fractastical/truthchain/tree/main" target="_blank">truthchain</a>.
+
+         <img width="600" alt="Screenshot 2024-05-06 at 12 50 14" src="https://github.com/fractastical/truthchain/assets/589191/594b6f1b-ea9c-4720-94ab-0a64530fedce">
+
+        <h1>Development </h1>
+    
+        <p>Secondary development was in fitting the assumptions of AI about the world it lives inside of in a similar format and preparing a data format that can easily be assessed by AI. 
+    
+    </div>
+
+    <svg width="800" height="150"></svg>
+    <script>
+        const svg = d3.select("svg");
+
+        // Generate 100 nodes
+        const nodes = d3.range(10).map(i => ({ id: i, name: ` ` }));
+
+        // Add three additional nodes
+        nodes.push({ id: 10, name: 'digital' });
+        nodes.push({ id: 11, name: 'asset' });
+        nodes.push({ id: 12, name: 'artificial intelligence' });
+        
+        // Add a node with a link to an external form
+        nodes.push({ id: 13, name: 'home', url: 'https://digitalasset.ai' });
+
+        // Generate random links between nodes
+        const links = d3.range(30).map(() => ({
+            source: Math.floor(Math.random() * 14),
+            target: Math.floor(Math.random() * 14)
+        }));
+
+        // Remove letters D and A from node names
+        nodes.forEach(node => {
+            node.name = node.name.replace(/[DA]/g, "");
+        });
+
+        const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(30))
+            .force("charge", d3.forceManyBody().strength(-50))
+            .force("center", d3.forceCenter(svg.attr("width") / 2, svg.attr("height") / 2))
+            .on("tick", ticked);
+
+        const link = svg.append("g")
+            .attr("stroke", "#999")
+            .attr("stroke-opacity", 0.6)
+            .selectAll("line")
+            .data(links)
+            .enter().append("line")
+            .attr("stroke-width", d => Math.sqrt(d.value));
+
+        const node = svg.append("g")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1.5)
+            .selectAll("circle")
+            .data(nodes)
+            .enter().append("circle")
+            .attr("r", 5)
+            .attr("fill", d => d.url ? "red" : "#69b3a2") // Different color for nodes with links
+            .on("click", (event, d) => {
+                if (d.url) {
+                    window.open(d.url, '_blank');
+                }
+            })
+            .call(drag(simulation));
+
+        const labels = svg.append("g")
+            .selectAll("text")
+            .data(nodes)
+            .enter().append("text")
+            .attr("dy", -10)
+            .attr("text-anchor", "middle")
+            .text(d => d.name);
+
+        function ticked() {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
+
+            labels
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
+        }
+
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+    </script>
+</body>
+</html>
