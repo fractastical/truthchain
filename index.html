@@ -21,7 +21,6 @@
             font-size: 10px;
             fill: #333;
         }
-
     </style>
 </head>
 <body>
@@ -30,15 +29,20 @@
         const svg = d3.select("svg");
 
         // Generate 100 nodes
-        const nodes = d3.range(97).map(i => ({ id: i, name: ` ` }));
-        nodes.push({ id: 97, name: 'digital' });
-        nodes.push({ id: 98, name: 'asset' });
-        nodes.push({ id: 99, name: 'artificial intelligence' });
+        const nodes = d3.range(100).map(i => ({ id: i, name: ` ` }));
+
+        // Add three additional nodes
+        nodes.push({ id: 100, name: 'digital' });
+        nodes.push({ id: 101, name: 'asset' });
+        nodes.push({ id: 102, name: 'artificial intelligence' });
+        
+        // Add a node with a link to an external form
+        nodes.push({ id: 103, name: 'submit data', url: 'https://docs.google.com/forms/d/e/1FAIpQLSfh7lFcK9RfwvQxXTj9FRFdEctZt_rQ3EYlU7K0SvEPjIDcYA/viewform' });
 
         // Generate random links between nodes
         const links = d3.range(200).map(() => ({
-            source: Math.floor(Math.random() * 100),
-            target: Math.floor(Math.random() * 100)
+            source: Math.floor(Math.random() * 104),
+            target: Math.floor(Math.random() * 104)
         }));
 
         // Remove letters D and A from node names
@@ -67,7 +71,12 @@
             .data(nodes)
             .enter().append("circle")
             .attr("r", 5)
-            .attr("fill", "#69b3a2")
+            .attr("fill", d => d.url ? "red" : "#69b3a2") // Different color for nodes with links
+            .on("click", (event, d) => {
+                if (d.url) {
+                    window.open(d.url, '_blank');
+                }
+            })
             .call(drag(simulation));
 
         const labels = svg.append("g")
